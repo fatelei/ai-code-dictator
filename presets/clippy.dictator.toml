@@ -1,0 +1,31 @@
+# presets/clippy.dictator.toml
+# Zero-tolerance Clippy configuration for AI-assisted Rust projects.
+# Place as `clippy.toml` in your project root, and copy the [lints] section below into `Cargo.toml`.
+
+cognitive-complexity-threshold = 12
+too-many-lines-threshold = 50
+too-many-arguments-threshold = 5
+type-complexity-threshold = 250
+allow-unwrap-in-tests = true
+allow-expect-in-tests = true
+allow-dbg-in-tests = true
+
+# ---------------------------------------------------------------------------
+# Copy the section below into your `Cargo.toml` to enforce at compile time:
+# ---------------------------------------------------------------------------
+# [lints.rust]
+# unsafe_code = "forbid"
+# unused_must_use = "deny"
+#
+# [lints.clippy]
+# unwrap_used = "deny"
+# expect_used = "deny"
+# panic = "deny"
+# todo = "deny"
+# unimplemented = "deny"
+# dbg_macro = "deny"
+# print_stdout = "deny"
+# print_stderr = "deny"
+# clone_on_ref_ptr = "deny"
+# await_holding_lock = "deny"
+# pedantic = { level = "warn", priority = -1 }
