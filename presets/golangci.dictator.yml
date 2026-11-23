@@ -1,0 +1,43 @@
+# presets/golangci.dictator.yml
+# Zero-tolerance golangci-lint configuration for AI-assisted Go projects.
+
+run:
+  timeout: 5m
+
+linters:
+  enable:
+    - errcheck      # Ban unchecked errors (_ = err)
+    - errorlint     # Enforce %w error wrapping and errors.Is / errors.As
+    - wrapcheck     # Require errors from external packages to be wrapped
+    - govet         # Standard Go static analysis (shadowing, locks, printf)
+    - staticcheck   # Deep static analysis
+    - unused        # Ban dead code and unused parameters
+    - gosec         # Security checks (hardcoded creds, SQLi, weak crypto)
+    - gocognit      # Cognitive complexity ceiling
+    - nestif        # Ban deeply nested if blocks
+    - funlen        # Ban bloated functions
+    - contextcheck  # Catch non-inherited context.Background() in request paths
+    - bodyclose     # Catch unclosed HTTP response bodies
+    - sqlclosecheck # Catch unclosed sql.Rows / sql.Stmt
+    - noctx         # Require context.Context on outbound HTTP requests
+    - forbidigo     # Ban leftover fmt.Println / panic in production code
+
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+  gocognit:
+    min-complexity: 12
+  nestif:
+    min-complexity: 3
+  funlen:
+    lines: 50
+    statements: 35
+  forbidigo:
+    forbid:
+      - '^fmt\.Print.*$'
+      - '^panic$'
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0

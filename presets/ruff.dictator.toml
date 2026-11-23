@@ -1,0 +1,28 @@
+# presets/ruff.dictator.toml
+# Zero-tolerance Ruff configuration for AI-assisted Python projects.
+
+line-length = 100
+target-version = "py311"
+
+[lint]
+select = [
+  "F",    # Pyflakes (unused imports, undefined names)
+  "E",    # pycodestyle errors
+  "W",    # pycodestyle warnings
+  "B",    # flake8-bugbear (common bug patterns)
+  "BLE",  # flake8-blind-except (ban bare/blind except Exception)
+  "C901", # McCabe cyclomatic complexity
+  "I",    # isort
+  "UP",   # pyupgrade
+  "ANN",  # flake8-annotations (mandatory type annotations)
+  "SIM",  # flake8-simplify (flatten nested ifs)
+  "RET",  # flake8-return
+  "T20",  # flake8-print (ban leftover debug print())
+]
+
+[lint.mccabe]
+max-complexity = 10
+
+[lint.flake8-annotations]
+allow-star-arg-any = false
+suppress-dummy-args = true
